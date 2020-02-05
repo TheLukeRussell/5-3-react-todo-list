@@ -10,7 +10,8 @@ class TodoApp extends Component {
       {id: 1, text: 'Take out the trash', isComplete: false},
       {id: 2, text: 'Eat dinner', isComplete: false},
       {id: 3, text: 'Play with the puppy dogs', isComplete: false},
-      {id: 4, text: 'Go to bed before midnight', isComplete: false}
+      {id: 4, text: 'Go to bed before midnight', isComplete: false},
+      {id: 5, text: 'Grab some dubz with the boys', isComplete: false}
     ]
   };
 
