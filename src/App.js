@@ -1,20 +1,8 @@
 import React, {Component} from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import './App.css';
 
-// class TodoForm extends Component{
-// render() {
-//   return(
-
-//   )
-// }
-// }
-// let Todolist = (props) => {
-
-// return (
-//   <ul>{todos}</ul>
-// )
-
-// }
 class TodoApp extends Component {
   state = {
     todos: [
