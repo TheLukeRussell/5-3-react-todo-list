@@ -30,8 +30,8 @@ class TodoApp extends Component {
     return (
       <div className='TodoApp'>
         <h1>Stuff I've been putting off</h1>
-        {/* <TodoForm /> */}
-        {/* <TodoList /> */}
+        <TodoForm addTodo={this.addTodo} />
+        <TodoList todos={this.state.todos} />
       </div>
     );
   }
