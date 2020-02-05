@@ -1,45 +1,52 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 // class TodoForm extends Component{
-  // render() {
-  //   return(
+// render() {
+//   return(
 
-  //   )
-  // }
+//   )
 // }
-
+// }
 // let Todolist = (props) => {
 
-
-
-  // return (
-  //   <ul>{todos}</ul>
-  // )
+// return (
+//   <ul>{todos}</ul>
+// )
 
 // }
-
 class TodoApp extends Component {
-
-  state = ({
+  state = {
     todos: [
-
       {id: 0, text: 'Clean my room', isComplete: false},
       {id: 1, text: 'Take out the trash', isComplete: false},
-      {id: 2, text: 'Eat diiner', isComplete: false},
+      {id: 2, text: 'Eat dinner', isComplete: false},
       {id: 3, text: 'Play with the puppy dogs', isComplete: false},
-      {id: 4, text: 'Go to bed before midnight', isComplete: false},
-  ]
-  })
+      {id: 4, text: 'Go to bed before midnight', isComplete: false}
+    ]
+  };
+
+  addTodo = todo => {
+    todo.id = this.state.counter;
+    todo.isComplete = false;
+
+    let todos = this.state.todos.slice();
+    todos.unshift(todo);
+
+    this.setState({
+      todos
+    });
+  };
+
   render() {
-  return (
-    <div className="TodoApp">
-      <h1>Stuff I've been putting off</h1>
-      {/* <TodoForm /> */}
-      {/* <TodoList /> */}
-    </div>
-  );
-}
+    return (
+      <div className='TodoApp'>
+        <h1>Stuff I've been putting off</h1>
+        {/* <TodoForm /> */}
+        {/* <TodoList /> */}
+      </div>
+    );
+  }
 }
 
 export default TodoApp;
