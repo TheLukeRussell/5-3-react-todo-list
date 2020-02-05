@@ -3,17 +3,25 @@ import React, {Component} from 'react';
 class TodoItem extends Component {
   render() {
     return (
-      <li className='d-flex justify-content-end mt-3'>
-        <span className='mr-auto todo-task'>{this.props.todo.text}</span>
-        <button className='btn btn-info mr-1'>
-          <i className='fa fa-pencil'></i>
-        </button>
-        <button id='success-btn' className='btn btn-success mr-1'>
-          <i className='fa fa-check'></i>
-        </button>
-        <button className='btn btn-danger'>
-          <i className='fa fa-ban'></i>
-        </button>
+      <li>
+        <div className='row no-gutters'>
+          <span className='mr-auto todo-task col-10'>
+            <i className='fa fa-angle-double-right col-1'></i>
+            {this.props.todo.text}
+          </span>
+          <button className='btn btn-info mr-3 mb-3 mt-3 col'>
+            <i className='fa fa-pencil'></i>
+          </button>
+          <button
+            id='success-btn'
+            className='btn btn-success col mt-3 mb-3 mr-3'
+          >
+            <i className='fa fa-check'></i>
+          </button>
+          <button className='btn btn-danger col mt-3 mb-3'>
+            <i className='fa fa-ban'></i>
+          </button>
+        </div>
       </li>
     );
   }
