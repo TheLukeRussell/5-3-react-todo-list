@@ -32,7 +32,7 @@ class TodoApp extends Component {
       <div className='TodoApp'>
         <h1>Stuff I've been putting off</h1>
         <TodoForm addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} removeTodo={this.removeTodo}/>
       </div>
     );
   }

@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 
 class TodoItem extends Component {
-  handleDelete = event => {
-    console.log('you clicked delete');
+  state = {
+    todos: ''
+  };
+
+  handleDelete = (id) => {
+    // console.log('you clicked delete'
+
   };
 
   handleComplete = event => {
@@ -47,7 +52,7 @@ class TodoItem extends Component {
 }
 
 let Todolist = props => {
-  const todos = props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />);
+  const todos = props.todos.map(todo => <TodoItem key={todo.id} todo={todo} removeItem={this.props.removeItem} />);
 
   return <ul className='list-group'>{todos}</ul>;
 };
