@@ -12,7 +12,8 @@ class TodoApp extends Component {
       {id: 3, text: 'Play with the puppy dogs', isComplete: false},
       {id: 4, text: 'Go to bed before midnight', isComplete: false},
       {id: 5, text: 'Grab some dubz with the boys', isComplete: false}
-    ]
+    ],
+    counter: 6
   };
 
   addTodo = todo => {
@@ -21,26 +22,37 @@ class TodoApp extends Component {
 
     let todos = this.state.todos.slice();
     todos.unshift(todo);
+    console.log('todo', todo);
 
     this.setState({
-      todos
+      todos: todos,
+      counter: this.state.counter + 1
     });
   };
 
-  removeItem = (itemId) => {
+  removeItem = (id) => {
         const {todos} = this.state;
-        todos.splice(itemId, 1);
+        todos.splice(id, 1);
         this.setState({
             todos: todos
         });
     }
 
+  markComplete = (id) => {
+    const {todos} = this.state;
+    const todo = todos[id];
+    // todos.splice(id, 0,todo);
+    todo.isComplete = true;
+    console.log(todo.isComplete)
+  }
+
   render() {
+
     return (
       <div className='TodoApp'>
         <h1>Stuff I've been putting off</h1>
         <TodoForm addTodo={this.addTodo}  />
-        <TodoList todos={this.state.todos} removeItem={this.removeItem} />
+        <TodoList todos={this.state.todos} removeItem={this.removeItem} markComplete ={this.markComplete} />
       </div>
     );
   }

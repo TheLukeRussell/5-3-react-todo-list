@@ -54,3 +54,6 @@ button {
 li {
   border-bottom: solid 1pt #41415071;
 }
+ .done {
+   color: red;
+ }

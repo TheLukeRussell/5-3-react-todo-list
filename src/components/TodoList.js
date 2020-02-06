@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 class TodoItem extends Component {
 
   state = {
@@ -16,14 +15,18 @@ class TodoItem extends Component {
     this.props.removeItem(index);
 }
 
-  handleComplete = event => {
-    console.log('you clicked complete');
-    
-  };
+  handleComplete = () => {
+    let index = parseInt(this.props.index);
+    this.props.markComplete(index);
+  }
 
-  handleEdit = event => {
-    console.log('you clicked edit');
-  };
+  // handleComplete = event => {
+  //   console.log('you clicked complete');
+  // };
+
+  // handleEdit = event => {
+  //  
+  // };
 
   render() {
     return (
@@ -60,7 +63,7 @@ class TodoItem extends Component {
 
 class TodoList extends Component {
   render() {
-  const todos = this.props.todos.map(todo => <TodoItem removeItem={this.props.removeItem} key={todo.id} index={todo.id} todo={todo} />);
+  const todos = this.props.todos.map(todo => <TodoItem markComplete={this.props.markComplete} removeItem={this.props.removeItem} key={todo.id} index={todo.id} todo={todo} />);
 
   return <ul className='list-group'>{todos}</ul>;
 };
