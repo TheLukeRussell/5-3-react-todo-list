@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 class TodoForm extends Component {
   state = {
-    text: ''
+    text: '',
+    isComplete: false
   };
 
   handleInput = event => {

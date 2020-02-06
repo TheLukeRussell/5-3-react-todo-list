@@ -27,12 +27,20 @@ class TodoApp extends Component {
     });
   };
 
+  removeItem = (itemId) => {
+        const {todos} = this.state;
+        todos.splice(itemId, 1);
+        this.setState({
+            todos: todos
+        });
+    }
+
   render() {
     return (
       <div className='TodoApp'>
         <h1>Stuff I've been putting off</h1>
-        <TodoForm addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} removeTodo={this.removeTodo}/>
+        <TodoForm addTodo={this.addTodo}  />
+        <TodoList todos={this.state.todos} removeItem={this.removeItem} />
       </div>
     );
   }

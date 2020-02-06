@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 
 class TodoItem extends Component {
+
   state = {
-    todos: ''
-  };
+    todos: []
+  }
 
-  handleDelete = (id) => {
-    // console.log('you clicked delete'
+  // handleDelete = (id) => {
+  //   console.log('you clicked delete')
 
-  };
+  // };
+
+  handleDelete = () => {
+    let index = parseInt(this.props.index);
+    this.props.removeItem(index);
+}
 
   handleComplete = event => {
     console.log('you clicked complete');
+    
   };
 
   handleEdit = event => {
@@ -51,10 +58,12 @@ class TodoItem extends Component {
   }
 }
 
-let Todolist = props => {
-  const todos = props.todos.map(todo => <TodoItem key={todo.id} todo={todo} removeItem={this.props.removeItem} />);
+class TodoList extends Component {
+  render() {
+  const todos = this.props.todos.map(todo => <TodoItem removeItem={this.props.removeItem} key={todo.id} index={todo.id} todo={todo} />);
 
   return <ul className='list-group'>{todos}</ul>;
 };
+}
 
-export default Todolist;
+export default TodoList;
