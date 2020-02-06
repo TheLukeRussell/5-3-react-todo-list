@@ -42,13 +42,17 @@ class TodoApp extends Component {
   markComplete = (id) => {
     const {todos} = this.state;
     const todo = todos[id];
-    // todos.splice(id, 0,todo);
+    todos.splice(0, todo);
     todo.isComplete = true;
-    console.log(todo.isComplete)
     todo.done = !todo.done;
     this.setState({
       todos
     })
+  }
+
+  editItem = (text) => {
+    const {todos} = this.state;
+    console.log(text)
   }
 
   render() {
@@ -57,7 +61,7 @@ class TodoApp extends Component {
       <div className='TodoApp'>
         <h1>Stuff I've been putting off</h1>
         <TodoForm addTodo={this.addTodo}  />
-        <TodoList todos={this.state.todos} removeItem={this.removeItem} markComplete ={this.markComplete} />
+        <TodoList todos={this.state.todos} removeItem={this.removeItem} editItem={this.editItem} markComplete ={this.markComplete} />
       </div>
     );
   }

@@ -16,12 +16,13 @@ class TodoItem extends Component {
     this.props.markComplete(index);
   }
 
-  // handleEdit = event => {
-  //  
-  // };
+  handleEdit = () => {
+   let text = (this.props.text);
+   this.props.editItem(text);
+  };
 
   render() {
-    const isDone = this.props.todo.isComplete ? "done" : "undone";
+    const isDone = this.props.todo.done ? "done" : "undone";
     return (
       <li>
           <div className={isDone}>
@@ -57,7 +58,7 @@ class TodoItem extends Component {
 
 class TodoList extends Component {
   render() {
-  const todos = this.props.todos.map(todo => <TodoItem markComplete={this.props.markComplete} removeItem={this.props.removeItem} key={todo.id} index={todo.id} todo={todo} />);
+  const todos = this.props.todos.map(todo => <TodoItem markComplete={this.props.markComplete} editItem={this.props.editItem} removeItem={this.props.removeItem} key={todo.id} text={todo.text} index={todo.id} todo={todo} />);
 
   return <ul className='list-group'>{todos}</ul>;
 };
