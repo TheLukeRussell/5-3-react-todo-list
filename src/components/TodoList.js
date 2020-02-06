@@ -5,10 +5,6 @@ class TodoItem extends Component {
     todos: []
   }
 
-  // handleDelete = (id) => {
-  //   console.log('you clicked delete')
-
-  // };
 
   handleDelete = () => {
     let index = parseInt(this.props.index);
@@ -20,42 +16,40 @@ class TodoItem extends Component {
     this.props.markComplete(index);
   }
 
-  // handleComplete = event => {
-  //   console.log('you clicked complete');
-  // };
-
   // handleEdit = event => {
   //  
   // };
 
   render() {
+    const isDone = this.props.todo.isComplete ? "done" : "undone";
     return (
       <li>
-        <div className='row no-gutters'>
-          <span className='mr-auto todo-task col-10'>
-            <i className='fa fa-angle-double-right col-1'></i>
+          <div className={isDone}>
+          <span className='todo-task'>
+            <i className='fa fa-angle-double-right mr-3'></i>
             {this.props.todo.text}
           </span>
+          </div>
           <button
-            className='btn btn-info mr-3 mb-3 mt-3 col'
+            className='btn btn-info m-1 mt-2'
             onClick={this.handleEdit}
           >
             <i className='fa fa-pencil'></i>
           </button>
           <button
             id='success-btn'
-            className='btn btn-success col mt-3 mb-3 mr-3'
+            className='btn btn-success m-1 mt-2'
             onClick={this.handleComplete}
           >
             <i className='fa fa-check'></i>
           </button>
           <button
-            className='btn btn-danger col mt-3 mb-3'
+            className='btn btn-danger m-1 mt-2'
             onClick={this.handleDelete}
           >
             <i className='fa fa-ban'></i>
           </button>
-        </div>
+        
       </li>
     );
   }

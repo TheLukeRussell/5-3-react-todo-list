@@ -38,12 +38,17 @@ class TodoApp extends Component {
         });
     }
 
+
   markComplete = (id) => {
     const {todos} = this.state;
     const todo = todos[id];
     // todos.splice(id, 0,todo);
     todo.isComplete = true;
     console.log(todo.isComplete)
+    todo.done = !todo.done;
+    this.setState({
+      todos
+    })
   }
 
   render() {

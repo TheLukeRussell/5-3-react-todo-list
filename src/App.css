@@ -21,6 +21,7 @@ span {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   padding: 10px;
+  display: inline-block;
   /* border-bottom: 1pt solid black; */
 }
 
@@ -49,11 +50,19 @@ ul {
 button {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    float: right;
 }
 
 li {
   border-bottom: solid 1pt #41415071;
 }
  .done {
-   color: red;
+   text-decoration-line: line-through;
+   color: #41415071;
+   display: inline-block;
+ }
+
+ .undone {
+   color: #000;
+   display: inline-block;
  }
