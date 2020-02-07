@@ -2,6 +2,13 @@ body {
   background-color: #62627a71;
 }
 
+#trashcan {
+  width: 15%;
+  position: absolute;
+  top: 70px;
+  left: 100px;
+}
+
 h1 {
   text-align: center;
   padding: 3%;
@@ -53,16 +60,41 @@ button {
     float: right;
 }
 
+.todo-task {
+  /* display: none; */
+}
+
 li {
   border-bottom: solid 1pt #41415071;
 }
  .done {
    text-decoration-line: line-through;
    color: #41415071;
+   opacity: 0;
+   border: none;
    display: inline-block;
+   transition: 3s ease;
+   position: absolute;
+   top: 60px;
+   left: 50px;
  }
 
  .undone {
    color: #000;
    display: inline-block;
+ }
+
+ #edit-text {
+   margin-bottom: 0;
+   margin-top: 5px;
+   display: none;
+ }
+
+ #edit-bar {
+   display: inline-block;
+ }
+
+ #edit-btn {
+   display: none;
+   float: none;
  }

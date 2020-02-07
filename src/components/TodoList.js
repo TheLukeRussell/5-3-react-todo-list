@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 class TodoItem extends Component {
 
-  state = {
-    todos: []
-  }
-
+  // state = {
+  //   todos: [],
+  //   counter,
+  //   edit
+  // }
 
   handleDelete = () => {
     let index = parseInt(this.props.index);
@@ -14,23 +15,41 @@ class TodoItem extends Component {
   handleComplete = () => {
     let index = parseInt(this.props.index);
     this.props.markComplete(index);
-  }
+    }
 
   handleEdit = () => {
-   let text = (this.props.text);
-   this.props.editItem(text);
+   let index = parseInt(this.props.index);
+   this.props.editItem(index);
+  };
+  handleInput = event => {
+    let editText = event.target.value;
+    // this.setState({editText});
+    // console.log(this.handleInput);
   };
 
   render() {
     const isDone = this.props.todo.done ? "done" : "undone";
+    // const isEdit = this.props.todo.edit ? "edit" : "noedit";
     return (
-      <li>
-          <div className={isDone}>
+      <li className={isDone}>
+          {/* <div className={isDone}> */}
           <span className='todo-task'>
             <i className='fa fa-angle-double-right mr-3'></i>
-            {this.props.todo.text}
+          {this.props.todo.text}
           </span>
+          {/* </div> */}
+          <div id='edit-bar'>
+          <input
+            className='form-control'
+            placeholder='Change task to this...'
+            type='text'
+            name='edit-text'
+            id='edit-text'
+            // value={this.state.text}
+            onChange={this.handleInput}
+          />
           </div>
+          <button id='edit-btn' className='btn btn-primary ml-3'>Submit</button>
           <button
             className='btn btn-info m-1 mt-2'
             onClick={this.handleEdit}
