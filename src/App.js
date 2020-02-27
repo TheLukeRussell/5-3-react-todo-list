@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, {
+  Component
+} from 'react';
 import TodoForm from './components/TodoForm';
 import Header from './trashcan.js'
 import TodoList from './components/TodoList';
@@ -7,24 +9,43 @@ import './App.css';
 
 class TodoApp extends Component {
   state = {
-    todos: [
-      {id: 0, text: 'Clean my room', isComplete: false, isEdit: false},
-      {id: 1, text: 'Take out the trash', isComplete: false, isEdit: false},
-      {id: 2, text: 'Eat dinner', isComplete: false, isEdit: false},
-      {id: 3, text: 'Play with the puppy dogs', isComplete: false, isEdit: false},
-      {id: 4, text: 'Go to bed before midnight', isComplete: false, isEdit: false},
-      {id: 5, text: 'Grab some dubz with the boys', isComplete: false, isEdit: false}
+    todos: [{
+        id: 0,
+        text: 'Clean my room',
+        isEditing: false
+      },
+      {
+        id: 1,
+        text: 'Take out the trash',
+        isEditing: false
+      },
+      {
+        id: 2,
+        text: 'Eat dinner',
+        isEditing: false
+      },
+      {
+        id: 3,
+        text: 'Play with the puppy dogs',
+        isEditing: false
+      },
+      {
+        id: 4,
+        text: 'Go to bed before midnight',
+        isEditing: false
+      },
+      {
+        id: 5,
+        text: 'Grab some dubz with the boys',
+        isEditing: false
+      }
     ],
     counter: 6,
   };
 
-  addTodo = todo => {
-    todo.id = this.state.counter;
-    todo.isComplete = false;
-    todo.edit = false;
-    let todos = this.state.todos.slice();
-    todos.unshift(todo);
-    console.log('todo', todo);
+  addTodo = (todo) => {
+    let todos = [...this.state.todos];
+    todos.push(todo)
 
     this.setState({
       todos: todos,
@@ -32,44 +53,48 @@ class TodoApp extends Component {
     });
   };
 
-  removeItem = (id) => {
-        const {todos} = this.state;
-        todos.splice(id, 1);
-        this.setState({
-            todos
-        });
-    }
+  removeItem = (todo) => {
+    let todos = [...this.state.todos];
+    const index = todos.indexOf(todo)
+    console.log(index)
+    todos.splice(index, 1);
+    this.setState({
+      todos:todos
+    });
+  }
 
-
-  markComplete = (id) => {
-    const {todos} = this.state;
-    const todo = todos[id];
-    todos.splice(0, todo);
-    todo.isComplete = true;
-    todo.done = !todo.done;
+  markComplete = (todo) => {
+    console.log(todo)
+    let todos = [...this.state.todos]
+    const index = todos.indexOf(todo);
+    todos[index].isEditing = !todos[index].isEditing
     this.setState({
       todos
     })
     
   }
 
-  editItem = (id) => {
-    const {todos} = this.state;
-    const todo = todos[id];
-    todo.isEdit = true
-    // todo.edit = !todo.edit
-    console.log(todos)
-    // console.log(todo.edit)
+  editItem = (orig, updated) => {
+    let todos = [...this.state.todos];
+    const index = todos.indexOf(orig);
+    todos[index] = updated
+    this.setState({
+      todos: todos
+    })
   }
+
+  
 
   render() {
 
     return (
-      <div className='TodoApp'>
-        <Header />
-        <h1>Stuff I've been putting off</h1>
-        <TodoForm addTodo={this.addTodo}  />
-        <TodoList todos={this.state.todos} removeItem={this.removeItem} editItem={this.editItem} markComplete ={this.markComplete} />
+    <div className='TodoApp'>
+      <h1> Stuff I 've been putting off</h1>  
+      <TodoForm addTodo = {this.addTodo}/>  
+      <TodoList todos = {this.state.todos}
+      removeItem = {this.removeItem}
+      editItem = {this.editItem} 
+      markComplete = {this.markComplete}/>  
       </div>
     );
   }
